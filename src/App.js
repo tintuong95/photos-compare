@@ -1,7 +1,7 @@
 import ReactCompareImage from "react-compare-image";
 import { useState } from "react";
-import "react-html5-camera-photo/build/css/index.css";
-import Camera, { FACING_MODES, IMAGE_TYPES } from 'react-html5-camera-photo';
+
+
 import CameraCustomer from "./components/CameraCustomer";
 function App() {
   const [urlImageFirst, setUrlImageFirst] = useState(

@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import Camera from 'react-html5-camera-photo';
+import Camera, { FACING_MODES, IMAGE_TYPES } from 'react-html5-camera-photo';
 import 'react-html5-camera-photo/build/css/index.css';
 import {Button} from "antd"
 
@@ -17,8 +17,13 @@ const CameraCutomer =(props)=>{
    <div className="fixed top-0 left-0  z-40">
     {!visible && <Camera
     
-      
+    isImageMirror = {false}
+    isSilentMode = {false}
+    isDisplayStartCameraError = {true}
+    sizeFactor = {1}
     isFullscreen = {true}
+    imageType = {IMAGE_TYPES.JPG}
+    idealFacingMode = {FACING_MODES.USER}
    onTakePhoto = { (dataUri) => { handleTakePhoto(dataUri); } }
  />}
   </div>
