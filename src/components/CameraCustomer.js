@@ -23,7 +23,7 @@ const CameraCutomer =(props)=>{
     sizeFactor = {1}
     isFullscreen = {true}
     imageType = {IMAGE_TYPES.JPG}
-    idealFacingMode = {FACING_MODES.ENVIRONMENT}
+    idealFacingMode = {FACING_MODES.ENVIRONMENT||FACING_MODES.USER}
    onTakePhoto = { (dataUri) => { handleTakePhoto(dataUri); } }
  />}
   </div>
