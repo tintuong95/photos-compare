@@ -1,23 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
-
+import ReactCompareImage from "react-compare-image";
+import { useState } from "react";
+import "react-html5-camera-photo/build/css/index.css";
+import Camera, { FACING_MODES, IMAGE_TYPES } from 'react-html5-camera-photo';
+import CameraCustomer from "./components/CameraCustomer";
 function App() {
+  const [urlImageFirst, setUrlImageFirst] = useState(
+    "https://www.madeireiraestrela.com.br/images/joomlart/demo/default.jpg"
+  );
+  const [urlImageSecond, setUrlImageSecond] = useState(
+    "https://www.madeireiraestrela.com.br/images/joomlart/demo/default.jpg"
+  );
+
+  const onUploadPhoto = (e, cb) => {
+    const newUrl = URL.createObjectURL(e.target.files[0]);
+    cb(newUrl);
+  };
+  
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="  ">
+     
+      <div className="grid grid-cols-2 gap-2 my-6 px-10  m-auto">
+        <div className="col-span-1 flex gap-2 items-center">
+        <CameraCustomer cb={setUrlImageFirst}/>
+          <input
+            onChange={(event) => {
+              onUploadPhoto(event, setUrlImageFirst);
+            }}
+            type="file"
+            multiple={false}
+          />
+        </div>
+
+        <div className="col-span-1 flex gap-2 items-center">
+        <CameraCustomer cb={setUrlImageSecond}/>
+          <input
+            onChange={(event) => {
+              onUploadPhoto(event, setUrlImageSecond);
+            }}
+            type="file"
+          />
+        </div>
+      </div>
+      <div className="px-10 ">
+        <ReactCompareImage
+          leftImage={urlImageFirst}
+          rightImage={urlImageSecond}
+        />
+      </div>
+      ;
     </div>
   );
 }
